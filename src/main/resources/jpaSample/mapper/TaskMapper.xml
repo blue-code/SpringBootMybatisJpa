@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//configuration.mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jpaSample.mapper.TaskMapper">
+
+    <select id="search" resultType="jpaSample.model.Task" parameterType="jpaSample.model.Task">
+        SELECT
+            *
+        FROM task
+        <where>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+            <if test="description != null">
+                AND description = #{description}
+            </if>
+        </where>
+    </select>
+
+</mapper>
